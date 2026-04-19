@@ -265,6 +265,56 @@
     .modal-input-row input:focus { border-color: #1a1a1a; }
     .modal-input-row .btn { padding: 10px 16px; font-size: 14px; border-radius: 12px; }
 
+    /* ===== お気に入り馬 ===== */
+    #screen-fav .fab-wrap {
+      position: fixed; bottom: calc(24px + env(safe-area-inset-bottom));
+      right: 24px; z-index: 200;
+    }
+    .fav-card { cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+    .fav-card:active { transform: scale(0.98); }
+    .fav-card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+    .fav-card-name { font-size: 18px; font-weight: 700; }
+    .fav-card-memo { font-size: 13px; color: #888; margin-top: 6px; white-space: pre-wrap; }
+    .fav-card-actions { display: flex; gap: 8px; margin-top: 14px; }
+    .fav-card-actions .btn { flex: 1; font-size: 13px; padding: 8px 10px; }
+    /* ステータスタグ */
+    .status-tag {
+      display: inline-block; border-radius: 20px; padding: 4px 12px;
+      font-size: 12px; font-weight: 700;
+    }
+    .status-未出走    { background: #f0f0f0; color: #888; }
+    .status-出走予定  { background: #fff3cd; color: #856404; }
+    .status-出走済    { background: #d4edda; color: #155724; }
+    /* お気に入り馬フォームモーダル */
+    .fav-modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,0.4); align-items: flex-end; justify-content: center;
+    }
+    .fav-modal-overlay.open { display: flex; }
+    .fav-modal-sheet {
+      background: #fff; border-radius: 24px 24px 0 0;
+      padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
+      width: 100%;
+    }
+    .fav-modal-title { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+    /* ナビタブ */
+    .nav-tab {
+      display: flex; background: #fff;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      position: fixed; bottom: 0; left: 0; right: 0;
+      padding-bottom: env(safe-area-inset-bottom);
+      z-index: 300;
+    }
+    .nav-tab-btn {
+      flex: 1; border: none; background: none;
+      font-size: 10px; font-weight: 600; color: #aaa;
+      padding: 10px 0 6px; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .nav-tab-btn.active { color: #1a1a1a; }
+    .nav-tab-btn .tab-icon { font-size: 22px; }
+
     /* ===== 確認ダイアログ ===== */
     .confirm-overlay {
       display: none; position: fixed; inset: 0; z-index: 600;
@@ -399,6 +449,76 @@
 </div>
 
 <!-- ===========================
+     画面④：お気に入り馬
+=========================== -->
+<div id="screen-fav" class="screen">
+  <div class="header">
+    <div class="header-row">
+      <div>
+        <h1>⭐ お気に入り馬</h1>
+        <div class="header-sub" id="fav-summary">ロード中…</div>
+      </div>
+      <!-- 今週出走チェックボタン -->
+      <button class="btn btn-secondary" style="font-size:13px;padding:8px 12px;white-space:nowrap"
+        onclick="checkThisWeek()">📋 今週チェック</button>
+    </div>
+  </div>
+
+  <!-- ステータスフィルター -->
+  <div style="padding:10px 16px 0;display:flex;gap:8px;overflow-x:auto">
+    <button class="toggle-btn active" id="fav-filter-all"   onclick="setFavFilter('all')">すべて</button>
+    <button class="toggle-btn"        id="fav-filter-未出走" onclick="setFavFilter('未出走')">未出走</button>
+    <button class="toggle-btn"        id="fav-filter-出走予定" onclick="setFavFilter('出走予定')">出走予定</button>
+    <button class="toggle-btn"        id="fav-filter-出走済" onclick="setFavFilter('出走済')">出走済</button>
+  </div>
+
+  <div id="fav-list-container" style="padding-bottom:80px"></div>
+  <div id="fav-empty-state" class="list-empty" style="display:none">
+    <div class="emoji">⭐</div>
+    <p>登録された馬がありません<br>＋ボタンで追加しましょう！</p>
+  </div>
+
+  <div class="fab-wrap">
+    <button class="btn btn-icon" onclick="openFavModal(null)">＋</button>
+  </div>
+</div>
+
+<!-- ===========================
+     お気に入り馬 追加・編集モーダル
+=========================== -->
+<div class="fav-modal-overlay" id="fav-modal">
+  <div class="fav-modal-sheet">
+    <div class="fav-modal-title" id="fav-modal-title">馬を追加</div>
+    <div class="form-section">
+      <label class="form-label">馬名</label>
+      <input class="form-input" id="fav-name" placeholder="例）ドウデュース" />
+    </div>
+    <div class="form-section">
+      <label class="form-label">ステータス</label>
+      <div class="toggle-group" id="fav-status-group"></div>
+    </div>
+    <div class="form-section" style="margin-bottom:20px">
+      <label class="form-label">メモ</label>
+      <textarea class="form-input" id="fav-memo" placeholder="特徴・狙い条件など…" style="min-height:70px"></textarea>
+    </div>
+    <button class="btn btn-primary" onclick="saveFav()">💾 保存する</button>
+    <button class="btn btn-secondary" style="width:100%;margin-top:10px" onclick="closeFavModal()">キャンセル</button>
+  </div>
+</div>
+
+<!-- ===========================
+     ナビゲーションタブ
+=========================== -->
+<div class="nav-tab" id="nav-tab">
+  <button class="nav-tab-btn active" id="tab-list" onclick="switchTab('list')">
+    <span class="tab-icon">📋</span>記録
+  </button>
+  <button class="nav-tab-btn" id="tab-fav" onclick="switchTab('fav')">
+    <span class="tab-icon">⭐</span>お気に入り
+  </button>
+</div>
+
+<!-- ===========================
      騎手選択モーダル
 =========================== -->
 <div class="modal-overlay" id="jockey-modal">
@@ -444,9 +564,8 @@ const DEFAULT_JOCKEYS = [
 const LS_KEY      = 'keibaNote_records';
 const LS_JOCKEYS  = 'keibaNote_jockeys';
 
-/* ============================================================
-   状態
-============================================================ */
+const LS_FAVS     = 'keibaNote_favs';
+
 let records  = [];       // 全記録
 let editId   = null;     // 編集中のID（nullなら新規）
 let detailId = null;     // 詳細表示中のID
@@ -463,12 +582,13 @@ let customJockeys = [];  // ユーザーが追加した騎手
 ============================================================ */
 function loadData() {
   try { records = JSON.parse(localStorage.getItem(LS_KEY) || '[]'); } catch { records = []; }
-  try { customJockeys = JSON.parse(localStorage.getItem(LS_JOCKEYS) || '[]'); } catch { customJockeys = []; }
+  try { favs = JSON.parse(localStorage.getItem(LS_FAVS) || '[]'); } catch { favs = []; }
 }
 function saveData() {
   localStorage.setItem(LS_KEY, JSON.stringify(records));
 }
-function saveJockeys() {
+function saveFavData() { localStorage.setItem(LS_FAVS, JSON.stringify(favs)); }
+
   localStorage.setItem(LS_JOCKEYS, JSON.stringify(customJockeys));
 }
 
@@ -483,8 +603,21 @@ function showScreen(id) {
 function goList() { renderList(); showScreen('screen-list'); }
 
 /* ============================================================
-   一覧画面
+   タブ切り替え
 ============================================================ */
+function switchTab(tab) {
+  ['list','fav'].forEach(t => {
+    document.getElementById(`tab-${t}`).classList.toggle('active', t===tab);
+  });
+  // 編集画面はタブ対象外
+  if (tab==='list') { renderList(); showScreen('screen-list'); }
+  if (tab==='fav')  { renderFavList(); showScreen('screen-fav'); }
+}
+
+/* ============================================================
+   一覧画面（タブ対応：ナビを表示）
+============================================================ */
+
 function renderList() {
   loadData();
   const container = document.getElementById('race-list-container');
@@ -843,11 +976,118 @@ function closeConfirm() {
 }
 
 /* ============================================================
+   お気に入り馬
+============================================================ */
+const FAV_STATUSES = ['未出走','出走予定','出走済'];
+
+function renderFavList() {
+  loadData();
+  const container = document.getElementById('fav-list-container');
+  const empty     = document.getElementById('fav-empty-state');
+  const summary   = document.getElementById('fav-summary');
+
+  const filtered = favFilter==='all' ? favs : favs.filter(f=>f.status===favFilter);
+  summary.textContent = `全${favs.length}頭 / 出走予定${favs.filter(f=>f.status==='出走予定').length}頭`;
+
+  if (filtered.length===0) {
+    container.innerHTML=''; empty.style.display='block'; return;
+  }
+  empty.style.display='none';
+
+  container.innerHTML = filtered.map(f => `
+    <div class="card fav-card">
+      <div class="fav-card-header">
+        <div class="fav-card-name">🐎 ${esc(f.name)}</div>
+        <span class="status-tag status-${f.status}">${esc(f.status)}</span>
+      </div>
+      ${f.memo ? `<div class="fav-card-memo">${esc(f.memo)}</div>` : ''}
+      <div class="fav-card-actions">
+        ${FAV_STATUSES.filter(s=>s!==f.status).map(s=>
+          `<button class="btn btn-secondary" onclick="quickStatusChange('${f.id}','${s}')">→ ${s}</button>`
+        ).join('')}
+        <button class="btn btn-secondary" onclick="openFavModal('${f.id}')">✏️</button>
+        <button class="btn btn-danger" onclick="deleteFav('${f.id}')">🗑</button>
+      </div>
+    </div>`).join('');
+}
+
+function setFavFilter(f) {
+  favFilter = f;
+  ['all','未出走','出走予定','出走済'].forEach(k => {
+    const id = k==='all' ? 'fav-filter-all' : `fav-filter-${k}`;
+    document.getElementById(id)?.classList.toggle('active', k===f);
+  });
+  renderFavList();
+}
+
+function quickStatusChange(id, newStatus) {
+  const f = favs.find(x=>x.id===id);
+  if (f) { f.status=newStatus; saveFavData(); renderFavList(); }
+}
+
+function openFavModal(id) {
+  editFavId = id;
+  document.getElementById('fav-modal-title').textContent = id ? '馬を編集' : '馬を追加';
+  if (id) {
+    const f = favs.find(x=>x.id===id);
+    if (!f) return;
+    document.getElementById('fav-name').value  = f.name  || '';
+    document.getElementById('fav-memo').value  = f.memo  || '';
+    selFavStatus = f.status || '未出走';
+  } else {
+    document.getElementById('fav-name').value = '';
+    document.getElementById('fav-memo').value = '';
+    selFavStatus = '未出走';
+  }
+  renderFavStatusGroup();
+  document.getElementById('fav-modal').classList.add('open');
+}
+function closeFavModal() {
+  document.getElementById('fav-modal').classList.remove('open');
+}
+function renderFavStatusGroup() {
+  document.getElementById('fav-status-group').innerHTML = FAV_STATUSES.map(s =>
+    `<button class="toggle-btn ${selFavStatus===s?'active':''}"
+      onclick="selFavStatus='${s}';renderFavStatusGroup()">${s}</button>`
+  ).join('');
+}
+function saveFav() {
+  const name = document.getElementById('fav-name').value.trim();
+  if (!name) { alert('馬名を入力してください'); return; }
+  const memo = document.getElementById('fav-memo').value.trim();
+  if (editFavId) {
+    const f = favs.find(x=>x.id===editFavId);
+    if (f) { f.name=name; f.memo=memo; f.status=selFavStatus; f.updatedAt=Date.now(); }
+  } else {
+    favs.push({ id:genId(), name, memo, status:selFavStatus, createdAt:Date.now() });
+  }
+  saveFavData(); closeFavModal(); renderFavList();
+}
+function deleteFav(id) {
+  document.getElementById('confirm-dialog').classList.add('open');
+  document.getElementById('confirm-ok-btn').onclick = () => {
+    favs = favs.filter(f=>f.id!==id);
+    saveFavData(); closeConfirm(); renderFavList();
+  };
+}
+
+/* 今週出走チェック：出走予定馬を一覧表示してステータス更新を促す */
+function checkThisWeek() {
+  const targets = favs.filter(f=>f.status==='出走予定');
+  if (targets.length===0) {
+    alert('「出走予定」の馬がいません。\nステータスを「出走予定」にセットしてから使ってください。');
+    return;
+  }
+  const names = targets.map((f,i)=>`${i+1}. ${f.name}`).join('\n');
+  alert(`📋 今週の出走予定馬（${targets.length}頭）\n\n${names}\n\n出走後は「→ 出走済」ボタンで更新してください。`);
+}
+
+/* ============================================================
    バックアップ（エクスポート / インポート）
 ============================================================ */
 function exportJSON() {
   loadData();
-  const blob = new Blob([JSON.stringify(records, null, 2)], { type: 'application/json' });
+  const blob = new Blob([JSON.stringify({ records, favs }, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = `keibaNote_${todayStr()}.json`;
@@ -860,11 +1100,15 @@ function importJSON(event) {
   reader.onload = e => {
     try {
       const data = JSON.parse(e.target.result);
-      if (!Array.isArray(data)) throw new Error();
-      records = data;
-      saveData();
-      renderList();
-      alert(`✅ ${data.length}件をインポートしました`);
+      // 旧形式（配列）と新形式（{records,favs}）の両対応
+      if (Array.isArray(data)) {
+        records = data; favs = [];
+      } else {
+        records = Array.isArray(data.records) ? data.records : [];
+        favs    = Array.isArray(data.favs)    ? data.favs    : [];
+      }
+      saveData(); saveFavData(); renderList();
+      alert(`✅ 記録${records.length}件・お気に入り${favs.length}頭をインポートしました`);
     } catch {
       alert('❌ インポートに失敗しました。正しいJSONファイルか確認してください。');
     }
@@ -907,6 +1151,17 @@ function esc(str) {
 ============================================================ */
 loadData();
 renderList();
+// ナビタブを常時表示（編集・詳細画面では非表示にする）
+function goList() { renderList(); showScreen('screen-list'); document.getElementById('nav-tab').style.display='flex'; }
+function showScreenWithNav(id, showNav) {
+  showScreen(id);
+  document.getElementById('nav-tab').style.display = showNav ? 'flex' : 'none';
+}
+// 編集・詳細画面はナビ非表示
+const _origOpenEdit = openEdit;
+openEdit = id => { _origOpenEdit(id); document.getElementById('nav-tab').style.display='none'; };
+const _origOpenDetail = openDetail;
+openDetail = id => { _origOpenDetail(id); document.getElementById('nav-tab').style.display='none'; };
 
 // Service Worker 登録
 if ('serviceWorker' in navigator) {

@@ -14,19 +14,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, system-ui, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
-      background: #f5f5f5;
-      color: #1a1a1a;
-      min-height: 100vh;
+      background: #f5f5f5; color: #1a1a1a; min-height: 100vh;
       -webkit-text-size-adjust: 100%;
     }
-    /* ===== 画面管理 ===== */
     .screen { display: none; }
     .screen.active { display: block; }
 
     /* ===== ヘッダー ===== */
     .header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(245,245,245,0.85);
+      background: rgba(245,245,245,0.88);
       backdrop-filter: saturate(180%) blur(12px);
       -webkit-backdrop-filter: saturate(180%) blur(12px);
       padding: 16px 20px 12px;
@@ -38,272 +35,164 @@
 
     /* ===== カード ===== */
     .card {
-      background: #fff;
-      border-radius: 16px;
+      background: #fff; border-radius: 16px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-      padding: 18px;
-      margin: 12px 16px;
+      padding: 18px; margin: 12px 16px;
     }
 
-    /* ===== ボタン系 ===== */
+    /* ===== ボタン ===== */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       border: none; cursor: pointer; font-family: inherit;
-      font-weight: 600; transition: all 0.15s ease;
+      font-weight: 600; transition: all 0.15s;
       -webkit-tap-highlight-color: transparent;
     }
     .btn:active { transform: scale(0.96); }
-    .btn-primary {
-      background: #1a1a1a; color: #fff;
-      border-radius: 14px; padding: 14px 24px;
-      font-size: 16px; width: 100%;
-    }
-    .btn-secondary {
-      background: #f0f0f0; color: #1a1a1a;
-      border-radius: 12px; padding: 10px 18px;
-      font-size: 14px;
-    }
-    .btn-danger {
-      background: #fff0f0; color: #d00;
-      border-radius: 12px; padding: 10px 18px;
-      font-size: 14px;
-    }
-    .btn-icon {
-      background: #1a1a1a; color: #fff;
-      border-radius: 50%; width: 52px; height: 52px;
-      font-size: 26px; box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-    }
-    /* トグルボタン群 */
+    .btn-primary { background: #1a1a1a; color: #fff; border-radius: 14px; padding: 14px 24px; font-size: 16px; width: 100%; }
+    .btn-secondary { background: #f0f0f0; color: #1a1a1a; border-radius: 12px; padding: 10px 18px; font-size: 14px; }
+    .btn-danger { background: #fff0f0; color: #d00; border-radius: 12px; padding: 10px 18px; font-size: 14px; }
+    .btn-icon { background: #1a1a1a; color: #fff; border-radius: 50%; width: 52px; height: 52px; font-size: 26px; box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
     .toggle-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
     .toggle-btn {
-      border: 1.5px solid #e0e0e0;
-      background: #fff; color: #555;
-      border-radius: 20px; padding: 7px 14px;
-      font-size: 13px; font-weight: 500;
-      cursor: pointer; transition: all 0.15s;
-      -webkit-tap-highlight-color: transparent;
+      border: 1.5px solid #e0e0e0; background: #fff; color: #555;
+      border-radius: 20px; padding: 7px 14px; font-size: 13px; font-weight: 500;
+      cursor: pointer; transition: all 0.15s; -webkit-tap-highlight-color: transparent;
     }
-    .toggle-btn.active {
-      background: #1a1a1a; color: #fff; border-color: #1a1a1a;
-    }
+    .toggle-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
     .toggle-btn:active { transform: scale(0.95); }
 
     /* ===== フォーム ===== */
     .form-section { margin-bottom: 24px; }
-    .form-label {
-      font-size: 13px; font-weight: 600; color: #888;
-      text-transform: uppercase; letter-spacing: 0.5px;
-      margin-bottom: 8px; display: block;
-    }
-    .form-input {
-      width: 100%; border: 1.5px solid #e8e8e8;
-      border-radius: 12px; padding: 12px 14px;
-      font-size: 16px; font-family: inherit;
-      background: #fafafa; outline: none;
-      transition: border-color 0.2s;
-    }
+    .form-label { font-size: 13px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: block; }
+    .form-input { width: 100%; border: 1.5px solid #e8e8e8; border-radius: 12px; padding: 12px 14px; font-size: 16px; font-family: inherit; background: #fafafa; outline: none; transition: border-color 0.2s; }
     .form-input:focus { border-color: #1a1a1a; background: #fff; }
     textarea.form-input { resize: none; min-height: 80px; }
 
     /* ===== 一覧画面 ===== */
-    #screen-list .fab-wrap {
-      position: fixed; bottom: calc(24px + env(safe-area-inset-bottom));
-      right: 24px; z-index: 200;
-    }
-    .list-empty {
-      text-align: center; padding: 60px 20px; color: #bbb;
-    }
+    #screen-list .fab-wrap { position: fixed; bottom: calc(72px + env(safe-area-inset-bottom)); right: 24px; z-index: 200; }
+    .list-empty { text-align: center; padding: 60px 20px; color: #bbb; }
     .list-empty .emoji { font-size: 48px; margin-bottom: 12px; }
     .list-empty p { font-size: 15px; }
-
-    /* 一覧カード */
     .race-card { cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
     .race-card:active { transform: scale(0.98); box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
     .race-card-header { display: flex; justify-content: space-between; align-items: flex-start; }
     .race-card-title { font-size: 17px; font-weight: 700; }
     .race-card-date { font-size: 12px; color: #aaa; margin-top: 2px; }
-    .race-card-pnl {
-      font-size: 18px; font-weight: 700;
-      padding: 4px 10px; border-radius: 10px;
-    }
+    .race-card-pnl { font-size: 18px; font-weight: 700; padding: 4px 10px; border-radius: 10px; }
     .pnl-plus { color: #007aff; background: #eef4ff; }
     .pnl-minus { color: #d00; background: #fff0f0; }
     .pnl-zero { color: #888; background: #f0f0f0; }
     .race-card-meta { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
-    .badge {
-      font-size: 12px; font-weight: 500; color: #666;
-      background: #f4f4f4; border-radius: 8px; padding: 3px 9px;
-    }
-
-    /* ===== ツールバー（バックアップ） ===== */
-    .toolbar {
-      display: flex; gap: 10px; padding: 8px 16px 0;
-    }
+    .badge { font-size: 12px; font-weight: 500; color: #666; background: #f4f4f4; border-radius: 8px; padding: 3px 9px; }
+    .toolbar { display: flex; gap: 10px; padding: 8px 16px 0; }
     .toolbar .btn { font-size: 13px; padding: 8px 14px; flex: 1; }
 
-    /* ===== 新規作成・編集画面 ===== */
-    #screen-edit .page-header {
+    /* ===== 編集画面 ===== */
+    #screen-edit .page-header, #screen-detail .page-header {
       display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px;
       border-bottom: 1px solid rgba(0,0,0,0.08);
     }
-    .back-btn {
-      background: #f0f0f0; border: none; border-radius: 50%;
-      width: 36px; height: 36px; font-size: 18px;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      -webkit-tap-highlight-color: transparent;
-    }
+    .back-btn { background: #f0f0f0; border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; -webkit-tap-highlight-color: transparent; }
     .page-title { font-size: 18px; font-weight: 700; }
     .edit-body { padding: 0 16px 120px; }
-
-    /* 注目馬カード */
-    .horse-card {
-      background: #fafafa; border: 1.5px solid #efefef;
-      border-radius: 14px; padding: 14px; margin-bottom: 12px;
-    }
-    .horse-card-header {
-      display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;
-    }
+    .horse-card { background: #fafafa; border: 1.5px solid #efefef; border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+    .horse-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
     .horse-card-title { font-size: 14px; font-weight: 700; color: #555; }
-    .remove-btn {
-      background: none; border: none; color: #ccc;
-      font-size: 20px; cursor: pointer; padding: 0 4px;
-      -webkit-tap-highlight-color: transparent;
-    }
+    .remove-btn { background: none; border: none; color: #ccc; font-size: 20px; cursor: pointer; padding: 0 4px; -webkit-tap-highlight-color: transparent; }
     .remove-btn:active { color: #d00; }
-
-    /* 星評価 */
     .star-group { display: flex; gap: 6px; margin-top: 8px; }
-    .star-btn {
-      font-size: 24px; background: none; border: none;
-      cursor: pointer; opacity: 0.3; transition: opacity 0.15s;
-      -webkit-tap-highlight-color: transparent;
-    }
+    .star-btn { font-size: 24px; background: none; border: none; cursor: pointer; opacity: 0.25; transition: opacity 0.15s; -webkit-tap-highlight-color: transparent; }
     .star-btn.active { opacity: 1; }
-
-    /* 金額調整 */
     .amount-row { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
-    .amount-display {
-      flex: 1; text-align: center; font-size: 20px; font-weight: 700;
-      background: #f0f0f0; border-radius: 12px; padding: 10px;
-    }
-    .amount-btn {
-      background: #1a1a1a; color: #fff; border: none;
-      border-radius: 12px; padding: 10px 16px;
-      font-size: 14px; font-weight: 600; cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
+    .amount-display { flex: 1; text-align: center; font-size: 20px; font-weight: 700; background: #f0f0f0; border-radius: 12px; padding: 10px; }
+    .amount-btn { background: #1a1a1a; color: #fff; border: none; border-radius: 12px; padding: 10px 16px; font-size: 14px; font-weight: 600; cursor: pointer; -webkit-tap-highlight-color: transparent; }
     .amount-btn:active { transform: scale(0.95); }
     .amount-btn.minus { background: #f0f0f0; color: #1a1a1a; }
-
-    /* 買い目ブロック */
-    .bet-block {
-      background: #fafafa; border: 1.5px solid #efefef;
-      border-radius: 14px; padding: 14px; margin-bottom: 12px;
-    }
+    .bet-block { background: #fafafa; border: 1.5px solid #efefef; border-radius: 14px; padding: 14px; margin-bottom: 12px; }
     .result-group { display: flex; gap: 8px; margin-top: 8px; }
-    .result-btn {
-      flex: 1; border: 1.5px solid #e0e0e0;
-      background: #fff; color: #555; border-radius: 10px;
-      padding: 8px 4px; font-size: 13px; font-weight: 600;
-      cursor: pointer; text-align: center;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .result-btn.active-hit { background: #007aff; color: #fff; border-color: #007aff; }
-    .result-btn.active-miss { background: #d00; color: #fff; border-color: #d00; }
-    .result-btn.active-none { background: #888; color: #fff; border-color: #888; }
+    .result-btn { flex: 1; border: 1.5px solid #e0e0e0; background: #fff; color: #555; border-radius: 10px; padding: 8px 4px; font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; -webkit-tap-highlight-color: transparent; }
+    .result-btn.active-hit  { background: #007aff; color: #fff; border-color: #007aff; }
+    .result-btn.active-miss { background: #d00;    color: #fff; border-color: #d00; }
+    .result-btn.active-none { background: #888;    color: #fff; border-color: #888; }
 
     /* ===== 詳細画面 ===== */
-    #screen-detail .page-header {
-      display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-    }
     .detail-body { padding: 0 16px 120px; }
-    .detail-section-title {
-      font-size: 13px; font-weight: 600; color: #888;
-      text-transform: uppercase; letter-spacing: 0.5px;
-      margin: 20px 0 8px;
-    }
+    .detail-section-title { font-size: 13px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin: 20px 0 8px; }
     .detail-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
     .detail-key { font-size: 14px; color: #888; }
     .detail-val { font-size: 14px; font-weight: 600; }
     .detail-pnl { font-size: 28px; font-weight: 800; text-align: center; padding: 16px; }
-    .role-tag {
-      display: inline-block; border-radius: 8px; padding: 2px 10px;
-      font-size: 12px; font-weight: 700;
-    }
+    .role-tag { display: inline-block; border-radius: 8px; padding: 2px 10px; font-size: 12px; font-weight: 700; }
     .role-本命 { background: #ff3b30; color: #fff; }
     .role-対抗 { background: #007aff; color: #fff; }
     .role-単穴 { background: #ff9500; color: #fff; }
     .role-穴   { background: #34c759; color: #fff; }
     .role-消し { background: #e0e0e0; color: #888; }
 
-    /* ===== 騎手選択モーダル ===== */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 500;
-      background: rgba(0,0,0,0.4); align-items: flex-end; justify-content: center;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal-sheet {
-      background: #fff; border-radius: 24px 24px 0 0;
-      padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
-      width: 100%; max-height: 70vh; overflow-y: auto;
-    }
-    .modal-title { font-size: 16px; font-weight: 700; margin-bottom: 14px; }
-    .jockey-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-    .jockey-item {
-      border: 1.5px solid #e8e8e8; border-radius: 12px;
-      padding: 10px; text-align: center; font-size: 14px;
-      cursor: pointer; -webkit-tap-highlight-color: transparent;
-      transition: all 0.15s;
-    }
-    .jockey-item:active { background: #f5f5f5; }
-    .modal-input-row { display: flex; gap: 8px; margin-top: 14px; }
-    .modal-input-row input {
-      flex: 1; border: 1.5px solid #e8e8e8; border-radius: 12px;
-      padding: 10px 14px; font-size: 15px; font-family: inherit; outline: none;
-    }
-    .modal-input-row input:focus { border-color: #1a1a1a; }
-    .modal-input-row .btn { padding: 10px 16px; font-size: 14px; border-radius: 12px; }
-
-    /* ===== お気に入り馬 ===== */
-    #screen-fav .fab-wrap {
-      position: fixed; bottom: calc(24px + env(safe-area-inset-bottom));
-      right: 24px; z-index: 200;
-    }
-    .fav-card { cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+    /* ===== お気に入り馬画面 ===== */
+    #screen-fav .fab-wrap { position: fixed; bottom: calc(72px + env(safe-area-inset-bottom)); right: 24px; z-index: 200; }
+    .fav-card { transition: transform 0.15s, box-shadow 0.15s; }
     .fav-card:active { transform: scale(0.98); }
     .fav-card-header { display: flex; justify-content: space-between; align-items: flex-start; }
     .fav-card-name { font-size: 18px; font-weight: 700; }
     .fav-card-memo { font-size: 13px; color: #888; margin-top: 6px; white-space: pre-wrap; }
-    .fav-card-actions { display: flex; gap: 8px; margin-top: 14px; }
-    .fav-card-actions .btn { flex: 1; font-size: 13px; padding: 8px 10px; }
+    .fav-card-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+    .fav-card-actions .btn { font-size: 13px; padding: 8px 10px; }
     /* ステータスタグ */
-    .status-tag {
-      display: inline-block; border-radius: 20px; padding: 4px 12px;
-      font-size: 12px; font-weight: 700;
+    .status-tag { display: inline-block; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; }
+    .status-未出走   { background: #f0f0f0; color: #888; }
+    .status-出走予定 { background: #fff3cd; color: #856404; }
+    .status-出走済   { background: #d4edda; color: #155724; }
+    /* ♡ボタン */
+    .heart-btn {
+      background: none; border: 1.5px solid #e0e0e0; border-radius: 50%;
+      width: 36px; height: 36px; font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s; -webkit-tap-highlight-color: transparent; flex-shrink: 0;
     }
-    .status-未出走    { background: #f0f0f0; color: #888; }
-    .status-出走予定  { background: #fff3cd; color: #856404; }
-    .status-出走済    { background: #d4edda; color: #155724; }
-    /* お気に入り馬フォームモーダル */
-    .fav-modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 500;
-      background: rgba(0,0,0,0.4); align-items: flex-end; justify-content: center;
-    }
+    .heart-btn.liked { border-color: #ff2d55; background: #fff0f3; }
+    .heart-btn:active { transform: scale(0.88); }
+    /* ★評価（お気に入り馬用） */
+    .fav-stars { display: flex; gap: 4px; align-items: center; }
+    .fav-star-btn { font-size: 20px; background: none; border: none; cursor: pointer; opacity: 0.22; transition: opacity 0.15s; -webkit-tap-highlight-color: transparent; line-height: 1; }
+    .fav-star-btn.active { opacity: 1; }
+    /* お気に入りモーダル */
+    .fav-modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.4); align-items: flex-end; justify-content: center; }
     .fav-modal-overlay.open { display: flex; }
-    .fav-modal-sheet {
-      background: #fff; border-radius: 24px 24px 0 0;
-      padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
-      width: 100%;
-    }
+    .fav-modal-sheet { background: #fff; border-radius: 24px 24px 0 0; padding: 24px 20px calc(24px + env(safe-area-inset-bottom)); width: 100%; max-height: 85vh; overflow-y: auto; }
     .fav-modal-title { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
-    /* ナビタブ */
+
+    /* ===== 馬リスト画面 ===== */
+    #screen-horses .fab-wrap { position: fixed; bottom: calc(72px + env(safe-area-inset-bottom)); right: 24px; z-index: 200; }
+    /* サブタブ */
+    .subtab-bar { display: flex; overflow-x: auto; gap: 0; padding: 0 16px; border-bottom: 1px solid rgba(0,0,0,0.07); background: #fff; }
+    .subtab-btn {
+      border: none; background: none; font-family: inherit;
+      font-size: 13px; font-weight: 600; color: #aaa;
+      padding: 10px 14px; cursor: pointer; white-space: nowrap;
+      border-bottom: 2px solid transparent; transition: all 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .subtab-btn.active { color: #1a1a1a; border-bottom-color: #1a1a1a; }
+    /* 馬リストカード（コンパクト） */
+    .horse-list-card {
+      display: flex; align-items: center; gap: 12px;
+      background: #fff; border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 14px 16px; margin: 8px 16px;
+    }
+    .horse-list-icon { font-size: 22px; flex-shrink: 0; }
+    .horse-list-info { flex: 1; min-width: 0; }
+    .horse-list-name { font-size: 16px; font-weight: 700; }
+    .horse-list-sub  { font-size: 12px; color: #999; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .horse-list-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+
+    /* ===== ナビタブ ===== */
     .nav-tab {
       display: flex; background: #fff;
       border-top: 1px solid rgba(0,0,0,0.08);
       position: fixed; bottom: 0; left: 0; right: 0;
-      padding-bottom: env(safe-area-inset-bottom);
-      z-index: 300;
+      padding-bottom: env(safe-area-inset-bottom); z-index: 300;
     }
     .nav-tab-btn {
       flex: 1; border: none; background: none;
@@ -315,16 +204,22 @@
     .nav-tab-btn.active { color: #1a1a1a; }
     .nav-tab-btn .tab-icon { font-size: 22px; }
 
+    /* ===== 騎手モーダル ===== */
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.4); align-items: flex-end; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal-sheet { background: #fff; border-radius: 24px 24px 0 0; padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); width: 100%; max-height: 70vh; overflow-y: auto; }
+    .modal-title { font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+    .jockey-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .jockey-item { border: 1.5px solid #e8e8e8; border-radius: 12px; padding: 10px; text-align: center; font-size: 14px; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: all 0.15s; }
+    .jockey-item:active { background: #f5f5f5; }
+    .modal-input-row { display: flex; gap: 8px; margin-top: 14px; }
+    .modal-input-row input { flex: 1; border: 1.5px solid #e8e8e8; border-radius: 12px; padding: 10px 14px; font-size: 15px; font-family: inherit; outline: none; }
+    .modal-input-row input:focus { border-color: #1a1a1a; }
+
     /* ===== 確認ダイアログ ===== */
-    .confirm-overlay {
-      display: none; position: fixed; inset: 0; z-index: 600;
-      background: rgba(0,0,0,0.4); align-items: center; justify-content: center;
-    }
+    .confirm-overlay { display: none; position: fixed; inset: 0; z-index: 600; background: rgba(0,0,0,0.4); align-items: center; justify-content: center; }
     .confirm-overlay.open { display: flex; }
-    .confirm-box {
-      background: #fff; border-radius: 20px; padding: 28px 24px;
-      width: calc(100% - 48px); max-width: 320px; text-align: center;
-    }
+    .confirm-box { background: #fff; border-radius: 20px; padding: 28px 24px; width: calc(100% - 48px); max-width: 320px; text-align: center; }
     .confirm-box h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
     .confirm-box p { font-size: 14px; color: #666; margin-bottom: 20px; }
     .confirm-btns { display: flex; gap: 10px; }
@@ -333,9 +228,9 @@
 </head>
 <body>
 
-<!-- ===========================
-     画面①：一覧
-=========================== -->
+<!-- ============================
+     画面①：記録一覧
+============================= -->
 <div id="screen-list" class="screen active">
   <div class="header">
     <div class="header-row">
@@ -345,40 +240,30 @@
       </div>
     </div>
   </div>
-
-  <!-- バックアップツールバー -->
   <div class="toolbar">
     <button class="btn btn-secondary" onclick="exportJSON()">📤 エクスポート</button>
     <button class="btn btn-secondary" onclick="document.getElementById('import-file').click()">📥 インポート</button>
     <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(event)" />
   </div>
-
-  <!-- 記録一覧 -->
-  <div id="race-list-container"></div>
-
-  <!-- 空状態 -->
+  <div id="race-list-container" style="padding-bottom:80px"></div>
   <div id="empty-state" class="list-empty" style="display:none">
     <div class="emoji">📝</div>
     <p>記録がまだありません<br>＋ボタンで始めましょう！</p>
   </div>
-
-  <!-- 新規作成FAB -->
   <div class="fab-wrap">
     <button class="btn btn-icon" onclick="openEdit(null)">＋</button>
   </div>
 </div>
 
-<!-- ===========================
+<!-- ============================
      画面②：新規作成・編集
-=========================== -->
+============================= -->
 <div id="screen-edit" class="screen">
   <div class="page-header">
     <button class="back-btn" onclick="goList()">‹</button>
     <div class="page-title" id="edit-title">新規作成</div>
   </div>
   <div class="edit-body">
-
-    <!-- 基本情報 -->
     <div class="card">
       <div class="form-section">
         <label class="form-label">日付</label>
@@ -386,54 +271,40 @@
       </div>
       <div class="form-section">
         <label class="form-label">競馬場</label>
-        <div class="toggle-group" id="venue-group">
-          <!-- JSで生成 -->
-        </div>
+        <div class="toggle-group" id="venue-group"></div>
       </div>
       <div class="form-section" style="margin-bottom:0">
         <label class="form-label">レース番号</label>
-        <div class="toggle-group" id="race-num-group">
-          <!-- JSで生成 -->
-        </div>
+        <div class="toggle-group" id="race-num-group"></div>
       </div>
     </div>
-
-    <!-- 注目馬 -->
     <div class="card">
       <label class="form-label">注目馬</label>
       <div id="horses-container"></div>
       <button class="btn btn-secondary" style="width:100%;margin-top:4px" onclick="addHorse()">＋ 馬を追加</button>
     </div>
-
-    <!-- 買い目 -->
     <div class="card">
       <label class="form-label">買い目</label>
       <div id="bets-container"></div>
       <button class="btn btn-secondary" style="width:100%;margin-top:4px" onclick="addBet()">＋ 買い目を追加</button>
     </div>
-
-    <!-- 反省 -->
     <div class="card">
       <div class="form-section">
         <label class="form-label">反省タグ</label>
-        <div class="toggle-group" id="review-tags-group">
-          <!-- JSで生成 -->
-        </div>
+        <div class="toggle-group" id="review-tags-group"></div>
       </div>
       <div class="form-section" style="margin-bottom:0">
         <label class="form-label">コメント</label>
         <textarea id="f-comment" class="form-input" placeholder="自由にメモ…"></textarea>
       </div>
     </div>
-
-    <!-- 保存ボタン -->
     <button class="btn btn-primary" style="margin:0 0 16px" onclick="saveRecord()">💾 保存する</button>
   </div>
 </div>
 
-<!-- ===========================
+<!-- ============================
      画面③：詳細
-=========================== -->
+============================= -->
 <div id="screen-detail" class="screen">
   <div class="page-header">
     <button class="back-btn" onclick="goList()">‹</button>
@@ -443,14 +314,14 @@
     <div id="detail-content"></div>
     <div style="display:flex;gap:10px;margin-top:16px">
       <button class="btn btn-secondary" style="flex:1" id="detail-edit-btn">✏️ 編集</button>
-      <button class="btn btn-danger" style="flex:1" id="detail-delete-btn">🗑 削除</button>
+      <button class="btn btn-danger"    style="flex:1" id="detail-delete-btn">🗑 削除</button>
     </div>
   </div>
 </div>
 
-<!-- ===========================
+<!-- ============================
      画面④：お気に入り馬
-=========================== -->
+============================= -->
 <div id="screen-fav" class="screen">
   <div class="header">
     <div class="header-row">
@@ -458,34 +329,52 @@
         <h1>⭐ お気に入り馬</h1>
         <div class="header-sub" id="fav-summary">ロード中…</div>
       </div>
-      <!-- 今週出走チェックボタン -->
       <button class="btn btn-secondary" style="font-size:13px;padding:8px 12px;white-space:nowrap"
         onclick="checkThisWeek()">📋 今週チェック</button>
     </div>
   </div>
-
-  <!-- ステータスフィルター -->
   <div style="padding:10px 16px 0;display:flex;gap:8px;overflow-x:auto">
-    <button class="toggle-btn active" id="fav-filter-all"   onclick="setFavFilter('all')">すべて</button>
-    <button class="toggle-btn"        id="fav-filter-未出走" onclick="setFavFilter('未出走')">未出走</button>
+    <button class="toggle-btn active" id="fav-filter-all"    onclick="setFavFilter('all')">すべて</button>
+    <button class="toggle-btn"        id="fav-filter-未出走"  onclick="setFavFilter('未出走')">未出走</button>
     <button class="toggle-btn"        id="fav-filter-出走予定" onclick="setFavFilter('出走予定')">出走予定</button>
-    <button class="toggle-btn"        id="fav-filter-出走済" onclick="setFavFilter('出走済')">出走済</button>
+    <button class="toggle-btn"        id="fav-filter-出走済"  onclick="setFavFilter('出走済')">出走済</button>
   </div>
-
   <div id="fav-list-container" style="padding-bottom:80px"></div>
   <div id="fav-empty-state" class="list-empty" style="display:none">
     <div class="emoji">⭐</div>
     <p>登録された馬がありません<br>＋ボタンで追加しましょう！</p>
   </div>
-
   <div class="fab-wrap">
     <button class="btn btn-icon" onclick="openFavModal(null)">＋</button>
   </div>
 </div>
 
-<!-- ===========================
+<!-- ============================
+     画面⑤：馬リスト（★別／♡）
+============================= -->
+<div id="screen-horses" class="screen">
+  <div class="header">
+    <div class="header-row">
+      <div>
+        <h1>📊 馬リスト</h1>
+        <div class="header-sub" id="horses-screen-summary">ロード中…</div>
+      </div>
+      <button class="btn btn-secondary" style="font-size:13px;padding:8px 12px;white-space:nowrap"
+        id="export-heart-btn" onclick="exportHeartList()" style="display:none">♡ エクスポート</button>
+    </div>
+  </div>
+  <!-- サブタブ：♡ / ★★★ / ★★ / ★ -->
+  <div class="subtab-bar" id="horses-subtab"></div>
+  <div id="horses-list-container" style="padding-bottom:80px"></div>
+  <div id="horses-empty-state" class="list-empty" style="display:none">
+    <div class="emoji">🐎</div>
+    <p>該当する馬がいません</p>
+  </div>
+</div>
+
+<!-- ============================
      お気に入り馬 追加・編集モーダル
-=========================== -->
+============================= -->
 <div class="fav-modal-overlay" id="fav-modal">
   <div class="fav-modal-sheet">
     <div class="fav-modal-title" id="fav-modal-title">馬を追加</div>
@@ -497,6 +386,23 @@
       <label class="form-label">ステータス</label>
       <div class="toggle-group" id="fav-status-group"></div>
     </div>
+    <!-- ★評価 -->
+    <div class="form-section">
+      <label class="form-label">★ 評価（1〜3）</label>
+      <div class="star-group" id="fav-star-group">
+        <button class="star-btn" onclick="setFavStar(1)">★</button>
+        <button class="star-btn" onclick="setFavStar(2)">★</button>
+        <button class="star-btn" onclick="setFavStar(3)">★</button>
+      </div>
+    </div>
+    <!-- ♡ボタン -->
+    <div class="form-section">
+      <label class="form-label">♡ お気に入りマーク</label>
+      <button class="heart-btn" id="fav-heart-toggle" onclick="toggleFavHeart()" style="width:auto;border-radius:12px;padding:8px 20px;gap:6px;font-size:15px">
+        <span id="fav-heart-icon">♡</span>
+        <span id="fav-heart-label">マークなし</span>
+      </button>
+    </div>
     <div class="form-section" style="margin-bottom:20px">
       <label class="form-label">メモ</label>
       <textarea class="form-input" id="fav-memo" placeholder="特徴・狙い条件など…" style="min-height:70px"></textarea>
@@ -506,21 +412,24 @@
   </div>
 </div>
 
-<!-- ===========================
+<!-- ============================
      ナビゲーションタブ
-=========================== -->
+============================= -->
 <div class="nav-tab" id="nav-tab">
-  <button class="nav-tab-btn active" id="tab-list" onclick="switchTab('list')">
+  <button class="nav-tab-btn active" id="tab-list"   onclick="switchTab('list')">
     <span class="tab-icon">📋</span>記録
   </button>
-  <button class="nav-tab-btn" id="tab-fav" onclick="switchTab('fav')">
+  <button class="nav-tab-btn" id="tab-fav"    onclick="switchTab('fav')">
     <span class="tab-icon">⭐</span>お気に入り
+  </button>
+  <button class="nav-tab-btn" id="tab-horses" onclick="switchTab('horses')">
+    <span class="tab-icon">📊</span>馬リスト
   </button>
 </div>
 
-<!-- ===========================
+<!-- ============================
      騎手選択モーダル
-=========================== -->
+============================= -->
 <div class="modal-overlay" id="jockey-modal">
   <div class="modal-sheet">
     <div class="modal-title">騎手を選択</div>
@@ -533,9 +442,9 @@
   </div>
 </div>
 
-<!-- ===========================
+<!-- ============================
      削除確認ダイアログ
-=========================== -->
+============================= -->
 <div class="confirm-overlay" id="confirm-dialog">
   <div class="confirm-box">
     <h3>削除しますか？</h3>
@@ -557,40 +466,46 @@ const ROLES       = ['本命','対抗','単穴','穴','消し'];
 const REASONS     = ['展開','騎手','血統','人気妙味','直感'];
 const BET_TYPES   = ['単勝','複勝','馬連','ワイド','三連複','三連単'];
 const REVIEW_TAGS = ['展開ミス','馬選びミス','買い方ミス','惜しい','見送り正解'];
-const DEFAULT_JOCKEYS = [
-  'C.ルメール','川田将雅','武豊','横山武史','坂井瑠星',
-  '戸崎圭太','松山弘平','M.デムーロ','横山和生'
-];
-const LS_KEY      = 'keibaNote_records';
-const LS_JOCKEYS  = 'keibaNote_jockeys';
-
-const LS_FAVS     = 'keibaNote_favs';
-
-let records  = [];       // 全記録
-let editId   = null;     // 編集中のID（nullなら新規）
-let detailId = null;     // 詳細表示中のID
-let horses   = [];       // 編集中の注目馬リスト
-let bets     = [];       // 編集中の買い目リスト
-let selVenue = '';       // 選択中の競馬場
-let selRaceNum = '';     // 選択中のレース番号
-let selReviewTags = [];  // 選択中の反省タグ
-let jockeyModalCallback = null; // 騎手選択後のコールバック
-let customJockeys = [];  // ユーザーが追加した騎手
+const FAV_STATUSES = ['未出走','出走予定','出走済'];
+const DEFAULT_JOCKEYS = ['C.ルメール','川田将雅','武豊','横山武史','坂井瑠星','戸崎圭太','松山弘平','M.デムーロ','横山和生'];
+const LS_KEY     = 'keibaNote_records';
+const LS_JOCKEYS = 'keibaNote_jockeys';
+const LS_FAVS    = 'keibaNote_favs';
 
 /* ============================================================
-   LocalStorage 操作
+   状態
+============================================================ */
+let records        = [];
+let favs           = [];
+let customJockeys  = [];
+let editId         = null;
+let detailId       = null;
+let horses         = [];
+let bets           = [];
+let selVenue       = '';
+let selRaceNum     = '';
+let selReviewTags  = [];
+let jockeyModalCallback = null;
+// お気に入りモーダル用
+let editFavId      = null;
+let selFavStatus   = '未出走';
+let selFavStars    = 0;
+let selFavHeart    = false;
+// フィルター
+let favFilter      = 'all';
+let horsesSubtab   = 'heart'; // 'heart' | '3' | '2' | '1'
+
+/* ============================================================
+   LocalStorage
 ============================================================ */
 function loadData() {
-  try { records = JSON.parse(localStorage.getItem(LS_KEY) || '[]'); } catch { records = []; }
-  try { favs = JSON.parse(localStorage.getItem(LS_FAVS) || '[]'); } catch { favs = []; }
+  try { records = JSON.parse(localStorage.getItem(LS_KEY)     || '[]'); } catch { records = []; }
+  try { favs    = JSON.parse(localStorage.getItem(LS_FAVS)    || '[]'); } catch { favs = []; }
+  try { customJockeys = JSON.parse(localStorage.getItem(LS_JOCKEYS) || '[]'); } catch { customJockeys = []; }
 }
-function saveData() {
-  localStorage.setItem(LS_KEY, JSON.stringify(records));
-}
-function saveFavData() { localStorage.setItem(LS_FAVS, JSON.stringify(favs)); }
-
-  localStorage.setItem(LS_JOCKEYS, JSON.stringify(customJockeys));
-}
+function saveData()    { localStorage.setItem(LS_KEY,     JSON.stringify(records)); }
+function saveFavData() { localStorage.setItem(LS_FAVS,    JSON.stringify(favs));    }
+function saveJockeys() { localStorage.setItem(LS_JOCKEYS, JSON.stringify(customJockeys)); }
 
 /* ============================================================
    画面切り替え
@@ -598,138 +513,103 @@ function saveFavData() { localStorage.setItem(LS_FAVS, JSON.stringify(favs)); }
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
 }
-function goList() { renderList(); showScreen('screen-list'); }
+function setNav(tab) {
+  ['list','fav','horses'].forEach(t =>
+    document.getElementById(`tab-${t}`)?.classList.toggle('active', t===tab)
+  );
+  document.getElementById('nav-tab').style.display = 'flex';
+}
+function hideNav() { document.getElementById('nav-tab').style.display = 'none'; }
 
-/* ============================================================
-   タブ切り替え
-============================================================ */
+function goList() { renderList(); showScreen('screen-list'); setNav('list'); }
+
 function switchTab(tab) {
-  ['list','fav'].forEach(t => {
-    document.getElementById(`tab-${t}`).classList.toggle('active', t===tab);
-  });
-  // 編集画面はタブ対象外
-  if (tab==='list') { renderList(); showScreen('screen-list'); }
-  if (tab==='fav')  { renderFavList(); showScreen('screen-fav'); }
+  setNav(tab);
+  if (tab==='list')   { renderList();     showScreen('screen-list'); }
+  if (tab==='fav')    { renderFavList();  showScreen('screen-fav'); }
+  if (tab==='horses') { renderHorsesScreen(); showScreen('screen-horses'); }
 }
 
 /* ============================================================
-   一覧画面（タブ対応：ナビを表示）
+   ① 記録一覧
 ============================================================ */
-
 function renderList() {
   loadData();
   const container = document.getElementById('race-list-container');
   const empty     = document.getElementById('empty-state');
   const summary   = document.getElementById('list-summary');
+  const sorted    = [...records].sort((a,b) => b.createdAt - a.createdAt);
 
-  // 新しい順にソート
-  const sorted = [...records].sort((a, b) => b.createdAt - a.createdAt);
-
-  if (sorted.length === 0) {
-    container.innerHTML = '';
-    empty.style.display = 'block';
-    summary.textContent = '記録なし';
-    return;
+  if (sorted.length===0) {
+    container.innerHTML=''; empty.style.display='block';
+    summary.textContent='記録なし'; return;
   }
-  empty.style.display = 'none';
-
-  // 合計収支
-  const totalPnl = sorted.reduce((sum, r) => sum + calcPnl(r), 0);
-  summary.textContent = `${sorted.length}件 / 収支合計 ${fmtPnl(totalPnl)}`;
+  empty.style.display='none';
+  const totalPnl = sorted.reduce((s,r)=>s+calcPnl(r),0);
+  summary.textContent=`${sorted.length}件 / 収支合計 ${fmtPnl(totalPnl)}`;
 
   container.innerHTML = sorted.map(r => {
-    const pnl = calcPnl(r);
-    const pnlClass = pnl > 0 ? 'pnl-plus' : pnl < 0 ? 'pnl-minus' : 'pnl-zero';
-    return `
-      <div class="card race-card" onclick="openDetail('${r.id}')">
-        <div class="race-card-header">
-          <div>
-            <div class="race-card-title">${esc(r.venue || '―')} ${esc(r.raceNum || '―')}</div>
-            <div class="race-card-date">${esc(r.date || '')}</div>
-          </div>
-          <div class="race-card-pnl ${pnlClass}">${fmtPnl(pnl)}</div>
+    const pnl=calcPnl(r), pc=pnl>0?'pnl-plus':pnl<0?'pnl-minus':'pnl-zero';
+    return `<div class="card race-card" onclick="openDetail('${r.id}')">
+      <div class="race-card-header">
+        <div>
+          <div class="race-card-title">${esc(r.venue||'―')} ${esc(r.raceNum||'―')}</div>
+          <div class="race-card-date">${esc(r.date||'')}</div>
         </div>
-        <div class="race-card-meta">
-          ${r.horses.length > 0 ? `<span class="badge">🐎 ${r.horses.map(h=>esc(h.name)).join('・')}</span>` : ''}
-          ${r.bets.length > 0 ? `<span class="badge">💴 購入 ${r.bets.reduce((s,b)=>s+(b.amount||0),0).toLocaleString()}円</span>` : ''}
-        </div>
-      </div>`;
+        <div class="race-card-pnl ${pc}">${fmtPnl(pnl)}</div>
+      </div>
+      <div class="race-card-meta">
+        ${r.horses.length>0?`<span class="badge">🐎 ${r.horses.map(h=>esc(h.name)).join('・')}</span>`:''}
+        ${r.bets.length>0?`<span class="badge">💴 ${r.bets.reduce((s,b)=>s+(b.amount||0),0).toLocaleString()}円</span>`:''}
+      </div>
+    </div>`;
   }).join('');
 }
 
 /* ============================================================
-   編集画面を開く
+   ② 編集画面
 ============================================================ */
 function openEdit(id) {
-  loadData();
-  editId = id;
-  document.getElementById('edit-title').textContent = id ? '編集' : '新規作成';
-
+  loadData(); editId=id;
+  document.getElementById('edit-title').textContent = id?'編集':'新規作成';
   if (id) {
-    const r = records.find(x => x.id === id);
-    if (!r) return;
-    document.getElementById('f-date').value    = r.date || todayStr();
-    selVenue                                    = r.venue || '';
-    selRaceNum                                  = r.raceNum || '';
-    horses                                      = JSON.parse(JSON.stringify(r.horses || []));
-    bets                                        = JSON.parse(JSON.stringify(r.bets || []));
-    selReviewTags                               = [...(r.reviewTags || [])];
-    document.getElementById('f-comment').value  = r.comment || '';
+    const r=records.find(x=>x.id===id); if(!r) return;
+    document.getElementById('f-date').value=r.date||todayStr();
+    selVenue=r.venue||''; selRaceNum=r.raceNum||'';
+    horses=JSON.parse(JSON.stringify(r.horses||[]));
+    bets=JSON.parse(JSON.stringify(r.bets||[]));
+    selReviewTags=[...(r.reviewTags||[])];
+    document.getElementById('f-comment').value=r.comment||'';
   } else {
-    document.getElementById('f-date').value = todayStr();
-    selVenue = ''; selRaceNum = '';
-    horses = []; bets = []; selReviewTags = [];
-    document.getElementById('f-comment').value = '';
+    document.getElementById('f-date').value=todayStr();
+    selVenue=''; selRaceNum=''; horses=[]; bets=[]; selReviewTags=[];
+    document.getElementById('f-comment').value='';
   }
-
-  renderVenueGroup();
-  renderRaceNumGroup();
-  renderHorses();
-  renderBets();
-  renderReviewTags();
-  showScreen('screen-edit');
+  renderVenueGroup(); renderRaceNumGroup(); renderHorses(); renderBets(); renderReviewTags();
+  showScreen('screen-edit'); hideNav();
 }
-
-/* ===== 競馬場ボタン生成 ===== */
 function renderVenueGroup() {
-  document.getElementById('venue-group').innerHTML = VENUES.map(v =>
-    `<button class="toggle-btn ${selVenue===v?'active':''}" onclick="selVenue='${v}';renderVenueGroup()">${v}</button>`
-  ).join('');
+  document.getElementById('venue-group').innerHTML=VENUES.map(v=>
+    `<button class="toggle-btn ${selVenue===v?'active':''}" onclick="selVenue='${v}';renderVenueGroup()">${v}</button>`).join('');
 }
-/* ===== レース番号ボタン生成 ===== */
 function renderRaceNumGroup() {
-  document.getElementById('race-num-group').innerHTML = RACE_NUMS.map(n =>
-    `<button class="toggle-btn ${selRaceNum===n?'active':''}" onclick="selRaceNum='${n}';renderRaceNumGroup()">${n}</button>`
-  ).join('');
+  document.getElementById('race-num-group').innerHTML=RACE_NUMS.map(n=>
+    `<button class="toggle-btn ${selRaceNum===n?'active':''}" onclick="selRaceNum='${n}';renderRaceNumGroup()">${n}</button>`).join('');
 }
-/* ===== 反省タグボタン生成 ===== */
 function renderReviewTags() {
-  document.getElementById('review-tags-group').innerHTML = REVIEW_TAGS.map(t =>
-    `<button class="toggle-btn ${selReviewTags.includes(t)?'active':''}" onclick="toggleTag('${t}')">${t}</button>`
-  ).join('');
+  document.getElementById('review-tags-group').innerHTML=REVIEW_TAGS.map(t=>
+    `<button class="toggle-btn ${selReviewTags.includes(t)?'active':''}" onclick="toggleTag('${t}')">${t}</button>`).join('');
 }
 function toggleTag(t) {
-  selReviewTags.includes(t)
-    ? (selReviewTags = selReviewTags.filter(x=>x!==t))
-    : selReviewTags.push(t);
+  selReviewTags.includes(t)?(selReviewTags=selReviewTags.filter(x=>x!==t)):selReviewTags.push(t);
   renderReviewTags();
 }
-
-/* ============================================================
-   注目馬
-============================================================ */
-function addHorse() {
-  horses.push({ name:'', role:'', stars:0, jockey:'', reasons:[] });
-  renderHorses();
-}
-function removeHorse(i) {
-  horses.splice(i, 1);
-  renderHorses();
-}
+function addHorse() { horses.push({name:'',role:'',stars:0,jockey:'',reasons:[]}); renderHorses(); }
+function removeHorse(i) { horses.splice(i,1); renderHorses(); }
 function renderHorses() {
-  document.getElementById('horses-container').innerHTML = horses.map((h, i) => `
+  document.getElementById('horses-container').innerHTML=horses.map((h,i)=>`
     <div class="horse-card">
       <div class="horse-card-header">
         <div class="horse-card-title">馬 ${i+1}</div>
@@ -737,90 +617,43 @@ function renderHorses() {
       </div>
       <div class="form-section">
         <label class="form-label">馬名</label>
-        <input class="form-input" value="${esc(h.name)}" placeholder="例）ディープインパクト"
-          oninput="horses[${i}].name=this.value" />
+        <input class="form-input" value="${esc(h.name)}" placeholder="例）ディープインパクト" oninput="horses[${i}].name=this.value" />
       </div>
       <div class="form-section">
         <label class="form-label">役割</label>
         <div class="toggle-group">
-          ${ROLES.map(r=>`<button class="toggle-btn ${h.role===r?'active':''}"
-            onclick="horses[${i}].role='${r}';renderHorses()">${r}</button>`).join('')}
+          ${ROLES.map(r=>`<button class="toggle-btn ${h.role===r?'active':''}" onclick="horses[${i}].role='${r}';renderHorses()">${r}</button>`).join('')}
         </div>
       </div>
       <div class="form-section">
         <label class="form-label">評価</label>
         <div class="star-group">
-          ${[1,2,3].map(s=>`<button class="star-btn ${h.stars>=s?'active':''}"
-            onclick="horses[${i}].stars=${s};renderHorses()">★</button>`).join('')}
+          ${[1,2,3].map(s=>`<button class="star-btn ${h.stars>=s?'active':''}" onclick="horses[${i}].stars=${s};renderHorses()">★</button>`).join('')}
         </div>
       </div>
       <div class="form-section">
         <label class="form-label">騎手</label>
-        <button class="btn btn-secondary" style="width:100%;justify-content:flex-start;gap:8px"
-          onclick="openJockeyModal(${i})">
-          <span>👤</span>
-          <span>${h.jockey ? esc(h.jockey) : '選択・入力する'}</span>
+        <button class="btn btn-secondary" style="width:100%;justify-content:flex-start;gap:8px" onclick="openJockeyModal(${i})">
+          <span>👤</span><span>${h.jockey?esc(h.jockey):'選択・入力する'}</span>
         </button>
       </div>
       <div class="form-section" style="margin-bottom:0">
         <label class="form-label">予想理由</label>
         <div class="toggle-group">
-          ${REASONS.map(r=>`<button class="toggle-btn ${h.reasons&&h.reasons.includes(r)?'active':''}"
-            onclick="toggleHorseReason(${i},'${r}')">${r}</button>`).join('')}
+          ${REASONS.map(r=>`<button class="toggle-btn ${h.reasons&&h.reasons.includes(r)?'active':''}" onclick="toggleHorseReason(${i},'${r}')">${r}</button>`).join('')}
         </div>
       </div>
     </div>`).join('');
 }
-function toggleHorseReason(i, r) {
-  if (!horses[i].reasons) horses[i].reasons = [];
-  horses[i].reasons.includes(r)
-    ? (horses[i].reasons = horses[i].reasons.filter(x=>x!==r))
-    : horses[i].reasons.push(r);
+function toggleHorseReason(i,r) {
+  if(!horses[i].reasons) horses[i].reasons=[];
+  horses[i].reasons.includes(r)?(horses[i].reasons=horses[i].reasons.filter(x=>x!==r)):horses[i].reasons.push(r);
   renderHorses();
 }
-
-/* ============================================================
-   騎手モーダル
-============================================================ */
-function openJockeyModal(horseIndex) {
-  jockeyModalCallback = (name) => { horses[horseIndex].jockey = name; renderHorses(); };
-  renderJockeyGrid();
-  document.getElementById('jockey-modal').classList.add('open');
-  document.getElementById('jockey-custom-input').value = '';
-}
-function closeJockeyModal() {
-  document.getElementById('jockey-modal').classList.remove('open');
-}
-function renderJockeyGrid() {
-  const all = [...new Set([...DEFAULT_JOCKEYS, ...customJockeys])];
-  document.getElementById('jockey-grid').innerHTML = all.map(j =>
-    `<div class="jockey-item" onclick="selectJockey('${esc(j)}')">${esc(j)}</div>`
-  ).join('');
-}
-function selectJockey(name) {
-  if (jockeyModalCallback) jockeyModalCallback(name);
-  closeJockeyModal();
-}
-function addCustomJockey() {
-  const val = document.getElementById('jockey-custom-input').value.trim();
-  if (!val) return;
-  if (!customJockeys.includes(val)) {
-    customJockeys.push(val);
-    saveJockeys();
-  }
-  selectJockey(val);
-}
-
-/* ============================================================
-   買い目
-============================================================ */
-function addBet() {
-  bets.push({ type:'', amount:0, result:'none', payout:0 });
-  renderBets();
-}
+function addBet() { bets.push({type:'',amount:0,result:'none',payout:0}); renderBets(); }
 function removeBet(i) { bets.splice(i,1); renderBets(); }
 function renderBets() {
-  document.getElementById('bets-container').innerHTML = bets.map((b, i) => `
+  document.getElementById('bets-container').innerHTML=bets.map((b,i)=>`
     <div class="bet-block">
       <div class="horse-card-header">
         <div class="horse-card-title">買い目 ${i+1}</div>
@@ -829,8 +662,7 @@ function renderBets() {
       <div class="form-section">
         <label class="form-label">券種</label>
         <div class="toggle-group">
-          ${BET_TYPES.map(t=>`<button class="toggle-btn ${b.type===t?'active':''}"
-            onclick="bets[${i}].type='${t}';renderBets()">${t}</button>`).join('')}
+          ${BET_TYPES.map(t=>`<button class="toggle-btn ${b.type===t?'active':''}" onclick="bets[${i}].type='${t}';renderBets()">${t}</button>`).join('')}
         </div>
       </div>
       <div class="form-section">
@@ -847,97 +679,70 @@ function renderBets() {
         <label class="form-label">結果</label>
         <div class="result-group">
           <button class="result-btn ${b.result==='none'?'active-none':''}" onclick="bets[${i}].result='none';renderBets()">―</button>
-          <button class="result-btn ${b.result==='hit'?'active-hit':''}" onclick="bets[${i}].result='hit';renderBets()">的中</button>
+          <button class="result-btn ${b.result==='hit'?'active-hit':''}"  onclick="bets[${i}].result='hit';renderBets()">的中</button>
           <button class="result-btn ${b.result==='miss'?'active-miss':''}" onclick="bets[${i}].result='miss';renderBets()">ハズレ</button>
         </div>
       </div>
-      ${b.result==='hit' ? `
-      <div class="form-section" style="margin-bottom:0">
+      ${b.result==='hit'?`<div class="form-section" style="margin-bottom:0">
         <label class="form-label">払戻金</label>
-        <input class="form-input" type="number" inputmode="numeric" value="${b.payout||0}"
-          placeholder="0" onchange="bets[${i}].payout=Number(this.value)||0" />
-      </div>` : ''}
+        <input class="form-input" type="number" inputmode="numeric" value="${b.payout||0}" placeholder="0" onchange="bets[${i}].payout=Number(this.value)||0" />
+      </div>`:''}
     </div>`).join('');
 }
-function adjustAmount(i, delta) {
-  bets[i].amount = Math.max(0, (bets[i].amount || 0) + delta);
-  renderBets();
-}
-
-/* ============================================================
-   保存
-============================================================ */
+function adjustAmount(i,delta) { bets[i].amount=Math.max(0,(bets[i].amount||0)+delta); renderBets(); }
 function saveRecord() {
-  const date = document.getElementById('f-date').value;
-  const comment = document.getElementById('f-comment').value;
-  if (!date) { alert('日付を入力してください'); return; }
-  if (!selVenue) { alert('競馬場を選択してください'); return; }
-
-  const record = {
-    id:         editId || genId(),
-    createdAt:  editId ? (records.find(r=>r.id===editId)?.createdAt || Date.now()) : Date.now(),
-    updatedAt:  Date.now(),
-    date, venue: selVenue, raceNum: selRaceNum,
-    horses: horses.map(h => ({...h})),
-    bets:   bets.map(b => ({...b})),
-    reviewTags: [...selReviewTags],
-    comment
+  const date=document.getElementById('f-date').value;
+  const comment=document.getElementById('f-comment').value;
+  if(!date){alert('日付を入力してください');return;}
+  if(!selVenue){alert('競馬場を選択してください');return;}
+  const record={
+    id:editId||genId(),
+    createdAt:editId?(records.find(r=>r.id===editId)?.createdAt||Date.now()):Date.now(),
+    updatedAt:Date.now(), date, venue:selVenue, raceNum:selRaceNum,
+    horses:horses.map(h=>({...h})), bets:bets.map(b=>({...b})),
+    reviewTags:[...selReviewTags], comment
   };
-
-  if (editId) {
-    const idx = records.findIndex(r => r.id === editId);
-    if (idx !== -1) records[idx] = record;
-  } else {
-    records.push(record);
-  }
-  saveData();
-  goList();
+  if(editId){const idx=records.findIndex(r=>r.id===editId);if(idx!==-1)records[idx]=record;}
+  else records.push(record);
+  saveData(); goList();
 }
 
 /* ============================================================
-   詳細画面
+   ③ 詳細画面
 ============================================================ */
 function openDetail(id) {
-  loadData();
-  detailId = id;
-  const r = records.find(x => x.id === id);
-  if (!r) return;
-
-  const pnl = calcPnl(r);
-  const pnlClass = pnl > 0 ? 'pnl-plus' : pnl < 0 ? 'pnl-minus' : 'pnl-zero';
-  const totalBet = r.bets.reduce((s,b)=>s+(b.amount||0),0);
-  const totalPay = r.bets.reduce((s,b)=>s+(b.result==='hit'?b.payout:0),0);
-
-  let html = `
-    <div class="card" style="margin-top:16px">
-      <div class="detail-pnl ${pnlClass}">${fmtPnl(pnl)}</div>
-      <div class="detail-row"><span class="detail-key">日付</span><span class="detail-val">${esc(r.date)}</span></div>
-      <div class="detail-row"><span class="detail-key">競馬場</span><span class="detail-val">${esc(r.venue||'―')}</span></div>
-      <div class="detail-row"><span class="detail-key">レース</span><span class="detail-val">${esc(r.raceNum||'―')}</span></div>
-      <div class="detail-row"><span class="detail-key">投資</span><span class="detail-val">${totalBet.toLocaleString()}円</span></div>
-      <div class="detail-row"><span class="detail-key">払戻</span><span class="detail-val">${totalPay.toLocaleString()}円</span></div>
-    </div>`;
-
-  if (r.horses.length > 0) {
-    html += `<div class="detail-section-title">🐎 注目馬</div>`;
-    r.horses.forEach(h => {
-      html += `<div class="card" style="margin-top:4px">
+  loadData(); detailId=id;
+  const r=records.find(x=>x.id===id); if(!r) return;
+  const pnl=calcPnl(r), pc=pnl>0?'pnl-plus':pnl<0?'pnl-minus':'pnl-zero';
+  const totalBet=r.bets.reduce((s,b)=>s+(b.amount||0),0);
+  const totalPay=r.bets.reduce((s,b)=>s+(b.result==='hit'?b.payout:0),0);
+  let html=`<div class="card" style="margin-top:16px">
+    <div class="detail-pnl ${pc}">${fmtPnl(pnl)}</div>
+    <div class="detail-row"><span class="detail-key">日付</span><span class="detail-val">${esc(r.date)}</span></div>
+    <div class="detail-row"><span class="detail-key">競馬場</span><span class="detail-val">${esc(r.venue||'―')}</span></div>
+    <div class="detail-row"><span class="detail-key">レース</span><span class="detail-val">${esc(r.raceNum||'―')}</span></div>
+    <div class="detail-row"><span class="detail-key">投資</span><span class="detail-val">${totalBet.toLocaleString()}円</span></div>
+    <div class="detail-row"><span class="detail-key">払戻</span><span class="detail-val">${totalPay.toLocaleString()}円</span></div>
+  </div>`;
+  if(r.horses.length>0){
+    html+=`<div class="detail-section-title">🐎 注目馬</div>`;
+    r.horses.forEach(h=>{
+      html+=`<div class="card" style="margin-top:4px">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <strong>${esc(h.name||'―')}</strong>
-          ${h.role ? `<span class="role-tag role-${h.role}">${h.role}</span>` : ''}
+          ${h.role?`<span class="role-tag role-${h.role}">${h.role}</span>`:''}
           <span>${'★'.repeat(h.stars||0)+'☆'.repeat(3-(h.stars||0))}</span>
         </div>
-        ${h.jockey ? `<div style="margin-top:6px;font-size:13px;color:#888">👤 ${esc(h.jockey)}</div>` : ''}
-        ${h.reasons&&h.reasons.length>0 ? `<div style="margin-top:6px;font-size:13px;color:#888">理由：${h.reasons.join('・')}</div>` : ''}
+        ${h.jockey?`<div style="margin-top:6px;font-size:13px;color:#888">👤 ${esc(h.jockey)}</div>`:''}
+        ${h.reasons&&h.reasons.length>0?`<div style="margin-top:6px;font-size:13px;color:#888">理由：${h.reasons.join('・')}</div>`:''}
       </div>`;
     });
   }
-
-  if (r.bets.length > 0) {
-    html += `<div class="detail-section-title">💴 買い目</div>`;
-    r.bets.forEach(b => {
-      const icon = b.result==='hit'?'✅':b.result==='miss'?'❌':'―';
-      html += `<div class="card" style="margin-top:4px">
+  if(r.bets.length>0){
+    html+=`<div class="detail-section-title">💴 買い目</div>`;
+    r.bets.forEach(b=>{
+      const icon=b.result==='hit'?'✅':b.result==='miss'?'❌':'―';
+      html+=`<div class="card" style="margin-top:4px">
         <div style="display:flex;justify-content:space-between;align-items:center">
           <span>${esc(b.type||'―')} / ${(b.amount||0).toLocaleString()}円</span>
           <span>${icon}${b.result==='hit'?` ${(b.payout||0).toLocaleString()}円`:''}</span>
@@ -945,230 +750,301 @@ function openDetail(id) {
       </div>`;
     });
   }
-
-  if (r.reviewTags.length > 0 || r.comment) {
-    html += `<div class="detail-section-title">📝 反省</div><div class="card" style="margin-top:4px">`;
-    if (r.reviewTags.length>0) html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:${r.comment?'10px':'0'}">${r.reviewTags.map(t=>`<span class="badge">${esc(t)}</span>`).join('')}</div>`;
-    if (r.comment) html += `<div style="font-size:14px;color:#555;white-space:pre-wrap">${esc(r.comment)}</div>`;
-    html += `</div>`;
+  if(r.reviewTags.length>0||r.comment){
+    html+=`<div class="detail-section-title">📝 反省</div><div class="card" style="margin-top:4px">`;
+    if(r.reviewTags.length>0) html+=`<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:${r.comment?'10px':'0'}">${r.reviewTags.map(t=>`<span class="badge">${esc(t)}</span>`).join('')}</div>`;
+    if(r.comment) html+=`<div style="font-size:14px;color:#555;white-space:pre-wrap">${esc(r.comment)}</div>`;
+    html+=`</div>`;
   }
-
-  document.getElementById('detail-content').innerHTML = html;
-  document.getElementById('detail-edit-btn').onclick   = () => openEdit(id);
-  document.getElementById('detail-delete-btn').onclick = () => confirmDelete(id);
-  showScreen('screen-detail');
+  document.getElementById('detail-content').innerHTML=html;
+  document.getElementById('detail-edit-btn').onclick  =()=>openEdit(id);
+  document.getElementById('detail-delete-btn').onclick=()=>confirmDelete(id);
+  showScreen('screen-detail'); hideNav();
 }
 
 /* ============================================================
-   削除
+   ④ お気に入り馬
 ============================================================ */
-function confirmDelete(id) {
-  document.getElementById('confirm-dialog').classList.add('open');
-  document.getElementById('confirm-ok-btn').onclick = () => {
-    records = records.filter(r => r.id !== id);
-    saveData();
-    closeConfirm();
-    goList();
-  };
-}
-function closeConfirm() {
-  document.getElementById('confirm-dialog').classList.remove('open');
-}
-
-/* ============================================================
-   お気に入り馬
-============================================================ */
-const FAV_STATUSES = ['未出走','出走予定','出走済'];
-
 function renderFavList() {
   loadData();
-  const container = document.getElementById('fav-list-container');
-  const empty     = document.getElementById('fav-empty-state');
-  const summary   = document.getElementById('fav-summary');
-
-  const filtered = favFilter==='all' ? favs : favs.filter(f=>f.status===favFilter);
-  summary.textContent = `全${favs.length}頭 / 出走予定${favs.filter(f=>f.status==='出走予定').length}頭`;
-
-  if (filtered.length===0) {
-    container.innerHTML=''; empty.style.display='block'; return;
-  }
+  const container=document.getElementById('fav-list-container');
+  const empty=document.getElementById('fav-empty-state');
+  const summary=document.getElementById('fav-summary');
+  const filtered=favFilter==='all'?favs:favs.filter(f=>f.status===favFilter);
+  summary.textContent=`全${favs.length}頭 / ♡${favs.filter(f=>f.heart).length}頭 / 出走予定${favs.filter(f=>f.status==='出走予定').length}頭`;
+  if(filtered.length===0){container.innerHTML='';empty.style.display='block';return;}
   empty.style.display='none';
-
-  container.innerHTML = filtered.map(f => `
+  container.innerHTML=filtered.map(f=>`
     <div class="card fav-card">
       <div class="fav-card-header">
-        <div class="fav-card-name">🐎 ${esc(f.name)}</div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <div class="fav-card-name">🐎 ${esc(f.name)}</div>
+          ${f.heart?`<span style="color:#ff2d55;font-size:16px">♥</span>`:''}
+        </div>
         <span class="status-tag status-${f.status}">${esc(f.status)}</span>
       </div>
-      ${f.memo ? `<div class="fav-card-memo">${esc(f.memo)}</div>` : ''}
+      <!-- ★評価 -->
+      <div style="display:flex;align-items:center;gap:2px;margin-top:6px">
+        ${[1,2,3].map(s=>`<span style="font-size:18px;opacity:${(f.stars||0)>=s?'1':'0.2'}">${(f.stars||0)>=s?'★':'★'}</span>`).join('')}
+      </div>
+      ${f.memo?`<div class="fav-card-memo">${esc(f.memo)}</div>`:''}
       <div class="fav-card-actions">
         ${FAV_STATUSES.filter(s=>s!==f.status).map(s=>
-          `<button class="btn btn-secondary" onclick="quickStatusChange('${f.id}','${s}')">→ ${s}</button>`
-        ).join('')}
+          `<button class="btn btn-secondary" onclick="quickStatusChange('${f.id}','${s}')">→ ${s}</button>`).join('')}
+        <button class="heart-btn ${f.heart?'liked':''}" onclick="toggleHeartDirect('${f.id}')">${f.heart?'♥':'♡'}</button>
         <button class="btn btn-secondary" onclick="openFavModal('${f.id}')">✏️</button>
-        <button class="btn btn-danger" onclick="deleteFav('${f.id}')">🗑</button>
+        <button class="btn btn-danger"    onclick="deleteFav('${f.id}')">🗑</button>
       </div>
     </div>`).join('');
 }
-
 function setFavFilter(f) {
-  favFilter = f;
-  ['all','未出走','出走予定','出走済'].forEach(k => {
-    const id = k==='all' ? 'fav-filter-all' : `fav-filter-${k}`;
-    document.getElementById(id)?.classList.toggle('active', k===f);
+  favFilter=f;
+  ['all','未出走','出走予定','出走済'].forEach(k=>{
+    const id=k==='all'?'fav-filter-all':`fav-filter-${k}`;
+    document.getElementById(id)?.classList.toggle('active',k===f);
   });
   renderFavList();
 }
-
-function quickStatusChange(id, newStatus) {
-  const f = favs.find(x=>x.id===id);
-  if (f) { f.status=newStatus; saveFavData(); renderFavList(); }
+function quickStatusChange(id,newStatus) {
+  const f=favs.find(x=>x.id===id); if(f){f.status=newStatus;saveFavData();renderFavList();}
+}
+function toggleHeartDirect(id) {
+  const f=favs.find(x=>x.id===id); if(f){f.heart=!f.heart;saveFavData();renderFavList();}
 }
 
+/* --- お気に入りモーダル --- */
 function openFavModal(id) {
-  editFavId = id;
-  document.getElementById('fav-modal-title').textContent = id ? '馬を編集' : '馬を追加';
-  if (id) {
-    const f = favs.find(x=>x.id===id);
-    if (!f) return;
-    document.getElementById('fav-name').value  = f.name  || '';
-    document.getElementById('fav-memo').value  = f.memo  || '';
-    selFavStatus = f.status || '未出走';
+  editFavId=id;
+  document.getElementById('fav-modal-title').textContent=id?'馬を編集':'馬を追加';
+  if(id){
+    const f=favs.find(x=>x.id===id); if(!f) return;
+    document.getElementById('fav-name').value=f.name||'';
+    document.getElementById('fav-memo').value=f.memo||'';
+    selFavStatus=f.status||'未出走';
+    selFavStars=f.stars||0;
+    selFavHeart=f.heart||false;
   } else {
-    document.getElementById('fav-name').value = '';
-    document.getElementById('fav-memo').value = '';
-    selFavStatus = '未出走';
+    document.getElementById('fav-name').value='';
+    document.getElementById('fav-memo').value='';
+    selFavStatus='未出走'; selFavStars=0; selFavHeart=false;
   }
-  renderFavStatusGroup();
+  renderFavStatusGroup(); renderFavStarGroup(); renderFavHeart();
   document.getElementById('fav-modal').classList.add('open');
 }
-function closeFavModal() {
-  document.getElementById('fav-modal').classList.remove('open');
-}
+function closeFavModal() { document.getElementById('fav-modal').classList.remove('open'); }
 function renderFavStatusGroup() {
-  document.getElementById('fav-status-group').innerHTML = FAV_STATUSES.map(s =>
-    `<button class="toggle-btn ${selFavStatus===s?'active':''}"
-      onclick="selFavStatus='${s}';renderFavStatusGroup()">${s}</button>`
-  ).join('');
+  document.getElementById('fav-status-group').innerHTML=FAV_STATUSES.map(s=>
+    `<button class="toggle-btn ${selFavStatus===s?'active':''}" onclick="selFavStatus='${s}';renderFavStatusGroup()">${s}</button>`).join('');
+}
+function setFavStar(n) {
+  // 同じ星をもう一度押したらリセット
+  selFavStars = selFavStars===n ? 0 : n;
+  renderFavStarGroup();
+}
+function renderFavStarGroup() {
+  const btns=document.querySelectorAll('#fav-star-group .star-btn');
+  btns.forEach((b,i)=>b.classList.toggle('active', selFavStars>=i+1));
+}
+function toggleFavHeart() { selFavHeart=!selFavHeart; renderFavHeart(); }
+function renderFavHeart() {
+  document.getElementById('fav-heart-icon').textContent=selFavHeart?'♥':'♡';
+  document.getElementById('fav-heart-label').textContent=selFavHeart?'マークあり':'マークなし';
+  document.getElementById('fav-heart-toggle').classList.toggle('liked',selFavHeart);
 }
 function saveFav() {
-  const name = document.getElementById('fav-name').value.trim();
-  if (!name) { alert('馬名を入力してください'); return; }
-  const memo = document.getElementById('fav-memo').value.trim();
-  if (editFavId) {
-    const f = favs.find(x=>x.id===editFavId);
-    if (f) { f.name=name; f.memo=memo; f.status=selFavStatus; f.updatedAt=Date.now(); }
+  const name=document.getElementById('fav-name').value.trim();
+  if(!name){alert('馬名を入力してください');return;}
+  const memo=document.getElementById('fav-memo').value.trim();
+  if(editFavId){
+    const f=favs.find(x=>x.id===editFavId);
+    if(f){f.name=name;f.memo=memo;f.status=selFavStatus;f.stars=selFavStars;f.heart=selFavHeart;f.updatedAt=Date.now();}
   } else {
-    favs.push({ id:genId(), name, memo, status:selFavStatus, createdAt:Date.now() });
+    favs.push({id:genId(),name,memo,status:selFavStatus,stars:selFavStars,heart:selFavHeart,createdAt:Date.now()});
   }
   saveFavData(); closeFavModal(); renderFavList();
+  // 馬リスト画面が表示中なら更新
+  if(document.getElementById('screen-horses').classList.contains('active')) renderHorsesScreen();
 }
 function deleteFav(id) {
   document.getElementById('confirm-dialog').classList.add('open');
-  document.getElementById('confirm-ok-btn').onclick = () => {
-    favs = favs.filter(f=>f.id!==id);
-    saveFavData(); closeConfirm(); renderFavList();
+  document.getElementById('confirm-ok-btn').onclick=()=>{
+    favs=favs.filter(f=>f.id!==id); saveFavData(); closeConfirm(); renderFavList();
   };
 }
-
-/* 今週出走チェック：出走予定馬を一覧表示してステータス更新を促す */
 function checkThisWeek() {
-  const targets = favs.filter(f=>f.status==='出走予定');
-  if (targets.length===0) {
-    alert('「出走予定」の馬がいません。\nステータスを「出走予定」にセットしてから使ってください。');
-    return;
-  }
-  const names = targets.map((f,i)=>`${i+1}. ${f.name}`).join('\n');
+  const targets=favs.filter(f=>f.status==='出走予定');
+  if(targets.length===0){alert('「出走予定」の馬がいません。\nステータスを「出走予定」にセットしてから使ってください。');return;}
+  const names=targets.map((f,i)=>`${i+1}. ${f.name}${f.stars?` [${'★'.repeat(f.stars)}]`:''}${f.heart?' ♥':''}`).join('\n');
   alert(`📋 今週の出走予定馬（${targets.length}頭）\n\n${names}\n\n出走後は「→ 出走済」ボタンで更新してください。`);
 }
 
 /* ============================================================
-   バックアップ（エクスポート / インポート）
+   ⑤ 馬リスト画面（★別 / ♡タブ）
+============================================================ */
+const SUBTABS = [
+  { key:'heart', label:'♥ お気に入り' },
+  { key:'3',     label:'★★★' },
+  { key:'2',     label:'★★' },
+  { key:'1',     label:'★' },
+];
+function renderHorsesScreen() {
+  loadData();
+  // サブタブ描画
+  document.getElementById('horses-subtab').innerHTML=SUBTABS.map(t=>
+    `<button class="subtab-btn ${horsesSubtab===t.key?'active':''}" onclick="setHorsesSubtab('${t.key}')">${t.label}</button>`).join('');
+
+  // ♡エクスポートボタン：♡タブのときだけ表示
+  document.getElementById('export-heart-btn').style.display = horsesSubtab==='heart' ? 'inline-flex' : 'none';
+
+  // フィルタリング
+  let filtered;
+  if(horsesSubtab==='heart') filtered=favs.filter(f=>f.heart);
+  else                        filtered=favs.filter(f=>(f.stars||0)===Number(horsesSubtab));
+
+  // ソート：ステータス順（出走予定→未出走→出走済）→名前
+  const statusOrder={'出走予定':0,'未出走':1,'出走済':2};
+  filtered=filtered.slice().sort((a,b)=>
+    (statusOrder[a.status]??9)-(statusOrder[b.status]??9)||a.name.localeCompare(b.name,'ja')
+  );
+
+  const summary=document.getElementById('horses-screen-summary');
+  summary.textContent=`${filtered.length}頭`;
+
+  const container=document.getElementById('horses-list-container');
+  const empty=document.getElementById('horses-empty-state');
+
+  if(filtered.length===0){container.innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';
+
+  container.innerHTML=filtered.map(f=>`
+    <div class="horse-list-card">
+      <div class="horse-list-icon">🐎</div>
+      <div class="horse-list-info">
+        <div class="horse-list-name">${esc(f.name)}${f.heart?' <span style="color:#ff2d55;font-size:14px">♥</span>':''}</div>
+        <div class="horse-list-sub">${f.memo?esc(f.memo):'メモなし'}</div>
+      </div>
+      <div class="horse-list-right">
+        <span class="status-tag status-${f.status}" style="font-size:11px;padding:3px 8px">${esc(f.status)}</span>
+        <div style="display:flex;gap:1px">${[1,2,3].map(s=>`<span style="font-size:14px;opacity:${(f.stars||0)>=s?'1':'0.18'}">${(f.stars||0)>=s?'★':'★'}</span>`).join('')}</div>
+      </div>
+    </div>`).join('');
+}
+function setHorsesSubtab(key) {
+  horsesSubtab=key; renderHorsesScreen();
+}
+
+/* ============================================================
+   ♡リスト テキストエクスポート
+============================================================ */
+function exportHeartList() {
+  loadData();
+  const hearts=favs.filter(f=>f.heart);
+  if(hearts.length===0){alert('♥マークの馬がいません');return;}
+  const statusOrder={'出走予定':0,'未出走':1,'出走済':2};
+  const sorted=hearts.slice().sort((a,b)=>(statusOrder[a.status]??9)-(statusOrder[b.status]??9)||a.name.localeCompare(b.name,'ja'));
+  const lines=[
+    `♥ お気に入り馬リスト（${todayStr()}）`,
+    `全${sorted.length}頭`,
+    '─────────────────',
+    ...sorted.map((f,i)=>{
+      const stars='★'.repeat(f.stars||0)+'☆'.repeat(3-(f.stars||0));
+      const memo=f.memo?`\n  メモ：${f.memo}`:'';
+      return `${i+1}. ${f.name}\n  ステータス：${f.status} ／ 評価：${stars}${memo}`;
+    }),
+    '─────────────────',
+  ];
+  const text=lines.join('\n');
+  const blob=new Blob([text],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`keiba_heart_${todayStr()}.txt`;
+  a.click();
+}
+
+/* ============================================================
+   騎手モーダル
+============================================================ */
+function openJockeyModal(horseIndex) {
+  jockeyModalCallback=(name)=>{horses[horseIndex].jockey=name;renderHorses();};
+  renderJockeyGrid();
+  document.getElementById('jockey-modal').classList.add('open');
+  document.getElementById('jockey-custom-input').value='';
+}
+function closeJockeyModal() { document.getElementById('jockey-modal').classList.remove('open'); }
+function renderJockeyGrid() {
+  const all=[...new Set([...DEFAULT_JOCKEYS,...customJockeys])];
+  document.getElementById('jockey-grid').innerHTML=all.map(j=>
+    `<div class="jockey-item" onclick="selectJockey('${esc(j)}')">${esc(j)}</div>`).join('');
+}
+function selectJockey(name) { if(jockeyModalCallback)jockeyModalCallback(name); closeJockeyModal(); }
+function addCustomJockey() {
+  const val=document.getElementById('jockey-custom-input').value.trim();
+  if(!val) return;
+  if(!customJockeys.includes(val)){customJockeys.push(val);saveJockeys();}
+  selectJockey(val);
+}
+
+/* ============================================================
+   削除確認ダイアログ
+============================================================ */
+function confirmDelete(id) {
+  document.getElementById('confirm-dialog').classList.add('open');
+  document.getElementById('confirm-ok-btn').onclick=()=>{
+    records=records.filter(r=>r.id!==id);
+    saveData(); closeConfirm(); goList();
+  };
+}
+function closeConfirm() { document.getElementById('confirm-dialog').classList.remove('open'); }
+
+/* ============================================================
+   バックアップ（JSON エクスポート / インポート）
 ============================================================ */
 function exportJSON() {
   loadData();
-  const blob = new Blob([JSON.stringify({ records, favs }, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `keibaNote_${todayStr()}.json`;
-  a.click();
+  const blob=new Blob([JSON.stringify({records,favs},null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download=`keibaNote_${todayStr()}.json`; a.click();
 }
 function importJSON(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
+  const file=event.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
     try {
-      const data = JSON.parse(e.target.result);
-      // 旧形式（配列）と新形式（{records,favs}）の両対応
-      if (Array.isArray(data)) {
-        records = data; favs = [];
-      } else {
-        records = Array.isArray(data.records) ? data.records : [];
-        favs    = Array.isArray(data.favs)    ? data.favs    : [];
-      }
-      saveData(); saveFavData(); renderList();
+      const data=JSON.parse(e.target.result);
+      if(Array.isArray(data)){records=data;favs=[];}
+      else{records=Array.isArray(data.records)?data.records:[];favs=Array.isArray(data.favs)?data.favs:[];}
+      saveData();saveFavData();renderList();
       alert(`✅ 記録${records.length}件・お気に入り${favs.length}頭をインポートしました`);
-    } catch {
-      alert('❌ インポートに失敗しました。正しいJSONファイルか確認してください。');
-    }
+    } catch {alert('❌ インポートに失敗しました。正しいJSONファイルか確認してください。');}
   };
   reader.readAsText(file);
-  event.target.value = '';
+  event.target.value='';
 }
 
 /* ============================================================
    ユーティリティ
 ============================================================ */
-// 収支計算
 function calcPnl(r) {
-  const totalBet = r.bets.reduce((s,b)=>s+(b.amount||0),0);
-  const totalPay = r.bets.reduce((s,b)=>s+(b.result==='hit'?b.payout:0),0);
-  return totalPay - totalBet;
+  return r.bets.reduce((s,b)=>s+(b.result==='hit'?b.payout:0),0)
+       - r.bets.reduce((s,b)=>s+(b.amount||0),0);
 }
-// 収支表示
-function fmtPnl(v) {
-  if (v === 0) return '±0円';
-  return (v > 0 ? '+' : '') + v.toLocaleString() + '円';
-}
-// 今日の日付
-function todayStr() {
-  return new Date().toLocaleDateString('sv-SE'); // YYYY-MM-DD
-}
-// ユニークID
-function genId() {
-  return Date.now().toString(36) + Math.random().toString(36).slice(2,6);
-}
-// XSS対策
-function esc(str) {
-  return String(str ?? '')
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
+function fmtPnl(v) { return v===0?'±0円':(v>0?'+':'')+v.toLocaleString()+'円'; }
+function todayStr() { return new Date().toLocaleDateString('sv-SE'); }
+function genId()    { return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+function esc(str)   { return String(str??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 /* ============================================================
-   起動処理
+   起動
 ============================================================ */
 loadData();
 renderList();
-// ナビタブを常時表示（編集・詳細画面では非表示にする）
-function goList() { renderList(); showScreen('screen-list'); document.getElementById('nav-tab').style.display='flex'; }
-function showScreenWithNav(id, showNav) {
-  showScreen(id);
-  document.getElementById('nav-tab').style.display = showNav ? 'flex' : 'none';
-}
-// 編集・詳細画面はナビ非表示
-const _origOpenEdit = openEdit;
-openEdit = id => { _origOpenEdit(id); document.getElementById('nav-tab').style.display='none'; };
-const _origOpenDetail = openDetail;
-openDetail = id => { _origOpenDetail(id); document.getElementById('nav-tab').style.display='none'; };
+setNav('list');
 
-// Service Worker 登録
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
     navigator.serviceWorker.register('./sw.js')
-      .then(() => console.log('SW registered'))
-      .catch(e => console.warn('SW registration failed:', e));
+      .then(()=>console.log('SW registered'))
+      .catch(e=>console.warn('SW failed:',e));
   });
 }
 </script>
